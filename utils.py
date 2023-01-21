@@ -22,4 +22,10 @@ def add_noise(data, noise_factor=0.2):
     data_noisy = tf.clip_by_value(data_noisy, clip_value_min=0., clip_value_max=1.)
     
     return data_noisy
-    
+   
+# Plot loss    
+def plot_loss(history):
+    plt.plot(range(len(history['loss'])), history['loss'], label='Training loss')
+    plt.plot(range(len(history['val_loss'])), history['val_loss'], label='Validation loss')
+    plt.title('Training and validation loss')
+    plt.legend()
