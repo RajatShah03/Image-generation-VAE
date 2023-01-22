@@ -9,6 +9,13 @@ from tensorflow import keras
 def preprocess(data):
     return data.astype('float32') / 255.
 
+# Preprocess with staticaly binarization
+def preprocess_binarize(images):
+    images = images[..., tf.newaxis]
+    images = images.astype('float32') / 255.
+    binarized = np.where(images > 0.5, 1.0, 0.0).astype('float32')
+    return binarized
+
 
 # Add random noise
 def add_noise(data, noise_factor=0.2):
